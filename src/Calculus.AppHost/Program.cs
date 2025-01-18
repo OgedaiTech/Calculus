@@ -1,3 +1,7 @@
+using Projects;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.Build().Run();
+builder.AddProject<Calculus_Web>("web");
+
+await builder.Build().RunAsync();
