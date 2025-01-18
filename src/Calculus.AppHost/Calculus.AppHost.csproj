@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../Calculus.Web/Calculus.Web.csproj" />
+    <ProjectReference Include="..\UI\Calculus.BlazorApp\Calculus.BlazorApp.csproj" />
   </ItemGroup>
 
 </Project>
