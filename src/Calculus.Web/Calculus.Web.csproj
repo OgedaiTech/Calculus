@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../Calculus.ServiceDefaults/Calculus.ServiceDefaults.csproj" />
+    <ProjectReference Include="../ScenarioModule/Calculus.Scenarios/Calculus.Scenarios.csproj" />
   </ItemGroup>
 
 </Project>
