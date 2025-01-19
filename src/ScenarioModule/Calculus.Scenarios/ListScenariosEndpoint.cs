@@ -24,6 +24,6 @@ internal class ListScenariosEndpoint : EndpointWithoutRequest<ListScenariosRespo
     await SendAsync(new ListScenariosResponse
     {
       Scenarios = scenarios
-    });
+    }, cancellation: ct);
   }
 }
