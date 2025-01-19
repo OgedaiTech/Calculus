@@ -1,4 +1,5 @@
 using Calculus.Scenarios;
+using FastEndpoints;
 
 namespace Calculus.Web;
 
@@ -9,6 +10,8 @@ public static class Program
     var builder = WebApplication.CreateBuilder(args);
 
     builder.AddServiceDefaults();
+
+    builder.Services.AddFastEndpoints();
 
     // Add Scenario Services
     builder.Services.AddScenarioServices();
@@ -26,9 +29,9 @@ public static class Program
 
     app.UseHttpsRedirection();
 
-    app.UseAuthorization();
+    app.UseFastEndpoints();
 
-    app.MapScenarioEndpoints();
+    app.UseAuthorization();
 
     app.Run();
   }
