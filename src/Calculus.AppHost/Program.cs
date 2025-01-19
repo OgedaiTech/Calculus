@@ -20,4 +20,4 @@ builder
   .AddProject<Calculus_BlazorApp>("blazor")
   .WithReference(webapi);
 
-builder.Build().Run();
+await builder.Build().RunAsync();
