@@ -2,8 +2,11 @@ using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
+var userName = builder.AddParameter("Username", "postgres");
+var password = builder.AddParameter("password", "G{hnBG_(.pQtJHN{-dB1d4");
+
 var postgresDbServer = builder
-  .AddPostgres("db")
+  .AddPostgres(name: "db", userName: userName, password: password, port: 59330)
   .WithDataVolume()
   .WithPgAdmin();
 
