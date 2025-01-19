@@ -1,6 +1,7 @@
 @Calculus.Web_HostAddress = http://localhost:5166
 
-GET {{Calculus.Web_HostAddress}}/weatherforecast/
+
+GET {{Calculus.Web_HostAddress}}/scenarios/
 Accept: application/json
 
 ###
