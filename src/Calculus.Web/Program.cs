@@ -13,8 +13,10 @@ public static class Program
 
     builder.Services.AddFastEndpoints();
 
+    builder.AddNpgsqlDbContext<ScenarioDbContext>("calculus");
     // Add Scenario Services
     builder.Services.AddScenarioServices();
+    builder.Services.AddScenarioRepository();
 
     builder.Services.AddAuthorization();
 

@@ -2,5 +2,5 @@ namespace Calculus.Scenarios;
 
 internal interface IScenarioService
 {
-    IEnumerable<ScenarioDto> ListScenarios();
+  Task<List<ScenarioDto>> ListScenarios();
 }

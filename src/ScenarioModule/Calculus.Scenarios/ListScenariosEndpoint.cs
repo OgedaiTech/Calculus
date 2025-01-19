@@ -19,11 +19,11 @@ internal class ListScenariosEndpoint : EndpointWithoutRequest<ListScenariosRespo
 
   public override async Task HandleAsync(CancellationToken ct)
   {
-    var scenarios = _scenarioService.ListScenarios();
+    var scenarios = await _scenarioService.ListScenarios();
 
     await SendAsync(new ListScenariosResponse
     {
-      Scenarios = scenarios.ToList()
+      Scenarios = scenarios
     });
   }
 }
