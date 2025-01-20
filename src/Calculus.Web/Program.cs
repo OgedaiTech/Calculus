@@ -1,3 +1,4 @@
+using Calculus.Common;
 using Calculus.Scenarios;
 using FastEndpoints;
 
@@ -13,7 +14,7 @@ public static class Program
 
     builder.Services.AddFastEndpoints();
 
-    builder.AddNpgsqlDbContext<ScenarioDbContext>("calculus");
+    builder.AddNpgsqlDbContext<ScenarioDbContext>(Constants.DbConsts.dbName);
     // Add Scenario Services
     builder.Services.AddScenarioServices();
     builder.Services.AddScenarioRepository();
