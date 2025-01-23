@@ -7,6 +7,6 @@ public static class ScenarioRepositoryExtensions
 {
   public static void AddScenarioRepository(this IServiceCollection services)
   {
-    services.AddScoped<IScenarioRepository, EfScenarioRepository>();
+    services.AddScoped<IListScenarioRepository, EfListScenarioRepository>();
   }
 }

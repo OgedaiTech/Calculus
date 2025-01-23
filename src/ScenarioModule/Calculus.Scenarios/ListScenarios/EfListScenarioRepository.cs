@@ -2,10 +2,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Calculus.Scenarios;
 
-public class EfScenarioRepository : IScenarioRepository
+public class EfListScenarioRepository : IListScenarioRepository
 {
   private readonly ScenarioDbContext _context;
-  public EfScenarioRepository(ScenarioDbContext context)
+  public EfListScenarioRepository(ScenarioDbContext context)
   {
     _context = context;
   }
@@ -15,24 +15,24 @@ public class EfScenarioRepository : IScenarioRepository
     await _context.SaveChangesAsync();
   }
 
-  Task IScenarioRepository.AddAsync(Scenario scenario)
+  Task IListScenarioRepository.AddAsync(Scenario scenario)
   {
     _context.Scenarios.Add(scenario);
     return Task.CompletedTask;
   }
 
-  Task IScenarioRepository.DeleteAsync(Scenario scenario)
+  Task IListScenarioRepository.DeleteAsync(Scenario scenario)
   {
     _context.Scenarios.Remove(scenario);
     return Task.CompletedTask;
   }
 
-  async Task<Scenario?> IReadOnlyScenarioRepository.GetByIdAsync(Guid id)
+  async Task<Scenario?> IReadOnlyListScenarioRepository.GetByIdAsync(Guid id)
   {
     return await _context.Scenarios.FindAsync(id);
   }
 
-  Task<List<Scenario>> IReadOnlyScenarioRepository.ListAsync()
+  Task<List<Scenario>> IReadOnlyListScenarioRepository.ListAsync()
   {
     return _context.Scenarios.ToListAsync();
   }

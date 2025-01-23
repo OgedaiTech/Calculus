@@ -6,6 +6,6 @@ public static class ScenarioServiceExtensions
 {
     public static void AddScenarioServices(this IServiceCollection services)
     {
-        services.AddScoped<IScenarioService, ScenarioService>();
+        services.AddScoped<IListScenarioService, ListScenarioService>();
     }
 }

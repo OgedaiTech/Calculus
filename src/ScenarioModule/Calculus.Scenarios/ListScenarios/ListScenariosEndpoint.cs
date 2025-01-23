@@ -4,9 +4,9 @@ namespace Calculus.Scenarios;
 
 internal class ListScenariosEndpoint : EndpointWithoutRequest<ListScenariosResponse>
 {
-  private readonly IScenarioService _scenarioService;
+  private readonly IListScenarioService _scenarioService;
 
-  public ListScenariosEndpoint(IScenarioService scenarioService)
+  public ListScenariosEndpoint(IListScenarioService scenarioService)
   {
     _scenarioService = scenarioService;
   }

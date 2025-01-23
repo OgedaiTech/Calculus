@@ -1,6 +1,6 @@
 namespace Calculus.Scenarios;
 
-internal interface IScenarioRepository : IReadOnlyScenarioRepository
+internal interface IListScenarioRepository : IReadOnlyListScenarioRepository
 {
   Task AddAsync(Scenario scenario);
   Task DeleteAsync(Scenario scenario);
