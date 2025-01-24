@@ -12,4 +12,9 @@ public static class Constants
     public const string dbName = "calculus";
   }
 
+  public static class Urls
+  {
+    public const string webApiUrl = "web";
+  }
+
 }

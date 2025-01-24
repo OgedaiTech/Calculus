@@ -4,6 +4,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../../Calculus.Common/Calculus.Common.csproj" />
     <ProjectReference Include="../../Calculus.ServiceDefaults/Calculus.ServiceDefaults.csproj" />
   </ItemGroup>
 
