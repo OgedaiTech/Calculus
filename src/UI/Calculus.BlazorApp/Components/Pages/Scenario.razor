@@ -7,27 +7,16 @@
 
 <h1>Scenario</h1>
 
-@if (scenarios is null)
+@if (_scenarios is null)
 {
     <p>Loading...</p>
 }
 else
 {
     <ul>
-    @foreach (var scenario in scenarios)
+    @foreach (var scenario in _scenarios)
         {
             <li>@scenario.Name by @scenario.Author</li>
         }
     </ul>
-}
-
-@code
-{
-    private List<ScenarioDto>? scenarios;
-
-    override protected async Task OnInitializedAsync()
-    {
-        var response = await Http.GetFromJsonAsync<ListScenariosResponse>($"https://{Constants.Urls.webApiUrl}/scenarios");
-        scenarios = response?.Scenarios;
-    }
 }

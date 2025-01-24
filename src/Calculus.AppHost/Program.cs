@@ -14,7 +14,7 @@ var postgresDbServer = builder
 var db = postgresDbServer.AddDatabase(Constants.DbConsts.dbName);
 
 var webapi = builder
-  .AddProject<Calculus_Web>(Constants.Urls.webApiUrl)
+  .AddProject<Calculus_Web>(Constants.Urls.WebApiUrl)
   .WithReference(db);
 
 builder

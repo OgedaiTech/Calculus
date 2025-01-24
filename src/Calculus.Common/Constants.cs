@@ -14,7 +14,7 @@ public static class Constants
 
   public static class Urls
   {
-    public const string webApiUrl = "web";
+    public const string WebApiUrl = "web";
   }
 
 }
