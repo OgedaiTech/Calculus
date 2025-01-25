@@ -1,5 +1,5 @@
+using Calculus.BlazorApp.Clients.Scenario;
 using Calculus.BlazorApp.Models;
-using Calculus.Common;
 using Microsoft.AspNetCore.Components;
 
 namespace Calculus.BlazorApp.Components.Pages;
@@ -7,17 +7,15 @@ namespace Calculus.BlazorApp.Components.Pages;
 public partial class Scenario : ComponentBase
 {
   private List<ScenarioDto>? _scenarios;
+  private readonly IScenarioClient _scenarioClient;
 
-  [Inject]
-  public required IHttpClientFactory HttpClientFactory { get; set; }
+  public Scenario(IScenarioClient scenarioClient)
+  {
+    _scenarioClient = scenarioClient;
+  }
 
   protected override async Task OnInitializedAsync()
   {
-    var httpClient = HttpClientFactory.CreateClient();
-    var response = await httpClient
-      .GetFromJsonAsync<ListScenariosResponse>
-      ($"https://{Constants.Urls.WebApiUrl}/scenarios");
-
-    _scenarios = response?.Scenarios;
+    _scenarios = await _scenarioClient.ListScenariosAsync();
   }
 }

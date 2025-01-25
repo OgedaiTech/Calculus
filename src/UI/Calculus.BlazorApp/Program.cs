@@ -1,8 +1,11 @@
+using Calculus.BlazorApp.Clients.Scenario;
 using Calculus.BlazorApp.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+
+builder.Services.AddScoped<IScenarioClient, ScenarioClient>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
