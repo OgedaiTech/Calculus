@@ -1,21 +1,23 @@
+using Calculus.BlazorApp.Models;
 using Calculus.Common;
+using Microsoft.AspNetCore.Components;
 
 namespace Calculus.BlazorApp.Components.Pages;
 
-public partial class Scenario
+public partial class Scenario : ComponentBase
 {
   private List<ScenarioDto>? _scenarios;
 
-  override protected async Task OnInitializedAsync()
+  [Inject]
+  public required IHttpClientFactory HttpClientFactory { get; set; }
+
+  protected override async Task OnInitializedAsync()
   {
-    var response = await Http.GetFromJsonAsync<ListScenariosResponse>($"https://{Constants.Urls.WebApiUrl}/scenarios");
+    var httpClient = HttpClientFactory.CreateClient();
+    var response = await httpClient
+      .GetFromJsonAsync<ListScenariosResponse>
+      ($"https://{Constants.Urls.WebApiUrl}/scenarios");
+
     _scenarios = response?.Scenarios;
   }
-}
-
-public record ScenarioDto(Guid Id, string Name, string Author);
-
-public class ListScenariosResponse
-{
-  public List<ScenarioDto> Scenarios { get; set; } = default!;
 }
