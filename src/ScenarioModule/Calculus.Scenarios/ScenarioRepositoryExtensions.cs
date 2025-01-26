@@ -1,5 +1,6 @@
 using System;
 using Calculus.Scenarios.GetById;
+using Calculus.Scenarios.VerticalSlices.Create;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calculus.Scenarios;
@@ -10,5 +11,6 @@ public static class ScenarioRepositoryExtensions
   {
     services.AddScoped<IListScenarioRepository, EfListScenarioRepository>();
     services.AddScoped<IGetScenarioByIdRepository, GetScenarioByIdRepository>();
+    services.AddScoped<ICreateScenarioRepository, CreateScenarioRepository>();
   }
 }

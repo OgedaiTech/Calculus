@@ -2,7 +2,7 @@
 
 <PageTitle>Scenario</PageTitle>
 
-<h1>Scenario</h1>
+<h1>Scenarios</h1>
 
 <ScenarioCreate />
 
@@ -12,10 +12,15 @@
 }
 else
 {
-    <ul>
+    <div class="d-flex flex-wrap gap-3 mt-3">
     @foreach (var scenario in _scenarios)
         {
-            <li>@scenario.Name by @scenario.Author</li>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@scenario.Name</h5>
+                    <p class="card-text">by @scenario.Author</p>
+                </div>
+            </div>
         }
-    </ul>
+    </div>
 }

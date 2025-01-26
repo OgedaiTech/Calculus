@@ -11,3 +11,11 @@ GET {{Calculus.Web_HostAddress}}/scenarios/{{scenarioId}}
 Accept: application/json
 
 ###
+
+POST {{Calculus.Web_HostAddress}}/scenarios/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Test Scenario"
+}
