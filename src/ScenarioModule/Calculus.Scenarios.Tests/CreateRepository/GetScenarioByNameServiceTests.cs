@@ -4,12 +4,12 @@ using Xunit;
 
 namespace Calculus.Scenarios.Tests.CreateRepository;
 
-public class GetScenarioByNameTests
+public class GetScenarioByServiceNameTests
 {
   readonly ICreateScenarioRepository _repository;
   readonly CreateScenarioService _service;
 
-  public GetScenarioByNameTests()
+  public GetScenarioByServiceNameTests()
   {
     _repository = Mock.Of<ICreateScenarioRepository>();
     _service = new CreateScenarioService(_repository);
