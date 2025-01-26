@@ -3,12 +3,12 @@ using Xunit;
 
 namespace Calculus.Scenarios.Tests.CreateRepository;
 
-public class CreateRepositoryTests
+public class CreateScenarioRepositoryTests
 {
   readonly ScenarioDbContext _context;
   readonly CreateScenarioRepository _repository;
 
-  public CreateRepositoryTests()
+  public CreateScenarioRepositoryTests()
   {
     _context = ContextGenerator.Generate();
     _repository = new CreateScenarioRepository(_context);

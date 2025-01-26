@@ -15,11 +15,9 @@ public class CreateScenarioRepository : ICreateScenarioRepository
   {
     var scenario = new Scenario(id: Guid.NewGuid(), name: name, author: "author", createdAt: DateTime.UtcNow, updatedAt: null, deletedAt: null);
     await _dbContext.Scenarios.AddAsync(scenario);
-    var result = await _dbContext.SaveChangesAsync(ct);
-    if (result == 0)
-    {
-      throw new InvalidOperationException("Failed to save scenario");
-    }
+
+    await _dbContext.SaveChangesAsync(ct);
+
     return new CreateScenarioResponse { Id = scenario.Id };
   }
 

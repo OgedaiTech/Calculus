@@ -29,6 +29,6 @@ internal class CreateScenarioEndpoint : Endpoint<CreateScenarioRequest, CreateSc
 
     var createdScenario = await _service.CreateScenarioAsync(req.Name, ct);
 
-    await SendCreatedAtAsync<CreateScenarioEndpoint>(routeValues: new { id = createdScenario.Id }, responseBody: createdScenario);
+    await SendCreatedAtAsync<CreateScenarioEndpoint>(routeValues: new { id = createdScenario.Data!.Id }, responseBody: createdScenario.Data);
   }
 }
