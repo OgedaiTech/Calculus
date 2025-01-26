@@ -1,6 +1,6 @@
 namespace Calculus.Scenarios;
 
-internal class Scenario
+public class Scenario
 {
   public Guid Id { get; private set; }
   public string Name { get; private set; }
@@ -9,7 +9,7 @@ internal class Scenario
   public DateTime? UpdatedAt { get; private set; }
   public DateTime? DeletedAt { get; private set; }
 
-  internal Scenario(Guid id, string name, string author, DateTime createdAt, DateTime? updatedAt, DateTime? deletedAt)
+  public Scenario(Guid id, string name, string author, DateTime createdAt, DateTime? updatedAt, DateTime? deletedAt)
   {
     Id = id;
     Name = Guard.AgainstNullOrEmpty(name);

@@ -5,7 +5,7 @@ namespace Calculus.Scenarios;
 
 public class ScenarioDbContext : DbContext
 {
-  internal DbSet<Scenario> Scenarios { get; set; }
+  public DbSet<Scenario> Scenarios { get; set; }
 
   public ScenarioDbContext(DbContextOptions options) : base(options)
   {

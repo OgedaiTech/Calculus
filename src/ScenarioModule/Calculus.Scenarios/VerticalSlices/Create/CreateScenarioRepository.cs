@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Calculus.Scenarios.VerticalSlices.Create;
 
-internal class CreateScenarioRepository : ICreateScenarioRepository
+public class CreateScenarioRepository : ICreateScenarioRepository
 {
   private readonly ScenarioDbContext _dbContext;
 
