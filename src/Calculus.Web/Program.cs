@@ -1,10 +1,11 @@
 using Calculus.Common;
 using Calculus.Scenarios;
 using FastEndpoints;
+using Microsoft.EntityFrameworkCore;
 
 namespace Calculus.Web;
 
-public static class Program
+public partial class Program
 {
   public static void Main(string[] args)
   {
@@ -14,7 +15,11 @@ public static class Program
 
     builder.Services.AddFastEndpoints();
 
-    builder.AddNpgsqlDbContext<ScenarioDbContext>(Constants.DbConsts.dbName);
+    builder.AddNpgsqlDbContext<ScenarioDbContext>(Constants.DbConsts.dbName,
+      configureDbContextOptions:
+        opt =>
+          opt.UseNpgsql(builder.Configuration.GetConnectionString(Constants.DbConsts.dbName)));
+
     // Add Scenario Services
     builder.Services.AddScenarioServices();
     builder.Services.AddScenarioRepository();
@@ -39,3 +44,5 @@ public static class Program
     app.Run();
   }
 }
+
+public partial class Program { }

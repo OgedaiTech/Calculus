@@ -21,7 +21,7 @@ internal class CreateScenarioEndpoint : Endpoint<CreateScenarioRequest, CreateSc
   public override async Task HandleAsync(CreateScenarioRequest req, CancellationToken ct)
   {
     var scenario = await _service.GetScenarioByNameAsync(req.Name, ct);
-    if (scenario is not null)
+    if (scenario.Data is not null)
     {
       await SendAsync(new CreateScenarioResponse { Id = scenario.Data!.Id }, statusCode: (int)HttpStatusCode.Conflict, cancellation: ct);
       return;
