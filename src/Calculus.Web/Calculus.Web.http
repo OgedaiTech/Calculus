@@ -19,3 +19,25 @@ Accept: application/json
 {
   "name": "Test Scenario"
 }
+
+###
+
+POST {{Calculus.Web_HostAddress}}/users/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "Barbaros@gmail.com",
+  "password": "Pass@word1"
+}
+
+###
+
+POST {{Calculus.Web_HostAddress}}/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "Barbaros.yurttagul@gmail.com",
+  "password": "Pass@word1"
+}

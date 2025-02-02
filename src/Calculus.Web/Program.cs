@@ -1,6 +1,8 @@
 using Calculus.Common;
 using Calculus.Scenarios;
+using Calculus.Users;
 using FastEndpoints;
+using FastEndpoints.Security;
 using Microsoft.EntityFrameworkCore;
 
 namespace Calculus.Web;
@@ -13,18 +15,24 @@ public partial class Program
 
     builder.AddServiceDefaults();
 
-    builder.Services.AddFastEndpoints();
+    builder.Services.AddFastEndpoints()
+      .AddAuthenticationJwtBearer(
+        options =>
+        {
+          options.SigningKey = builder.Configuration["Auth:JwtSecret"];
+        })
+      .AddAuthorization();
 
     builder.AddNpgsqlDbContext<ScenarioDbContext>(Constants.DbConsts.dbName,
       configureDbContextOptions:
         opt =>
           opt.UseNpgsql(builder.Configuration.GetConnectionString(Constants.DbConsts.dbName)));
 
+    builder.AddUsersModule();
+
     // Add Scenario Services
     builder.Services.AddScenarioServices();
     builder.Services.AddScenarioRepository();
-
-    builder.Services.AddAuthorization();
 
     builder.Services.AddOpenApi();
 
@@ -37,9 +45,11 @@ public partial class Program
 
     app.UseHttpsRedirection();
 
+    app.UseAuthentication()
+      .UseAuthorization();
     app.UseFastEndpoints();
 
-    app.UseAuthorization();
+
 
     app.Run();
   }

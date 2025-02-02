@@ -30,6 +30,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculus.Common", "src\Calc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculus.Scenarios.Tests", "src\ScenarioModule\Calculus.Scenarios.Tests\Calculus.Scenarios.Tests.csproj", "{50C0829C-92C8-48AA-9980-7B7F3A5C8885}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UsersModule", "UsersModule", "{9CAD8FE6-B022-4B56-BA4B-9FDF29181245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculus.Users", "src\UsersModule\Calculus.Users\Calculus.Users.csproj", "{46D1AC83-402E-4287-9DC4-7C9A15AC6209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +68,10 @@ Global
 		{50C0829C-92C8-48AA-9980-7B7F3A5C8885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50C0829C-92C8-48AA-9980-7B7F3A5C8885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50C0829C-92C8-48AA-9980-7B7F3A5C8885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D1AC83-402E-4287-9DC4-7C9A15AC6209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46D1AC83-402E-4287-9DC4-7C9A15AC6209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46D1AC83-402E-4287-9DC4-7C9A15AC6209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46D1AC83-402E-4287-9DC4-7C9A15AC6209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,5 +86,7 @@ Global
 		{526752EF-0ED4-461E-AC03-E5BF1CB63EB2} = {0655EA6B-3496-1C29-BCE9-F0FFE094DA84}
 		{52E64D44-54B1-481A-B904-EB841AC55642} = {B077B1ED-067B-495A-BBC9-638A3C3769A8}
 		{50C0829C-92C8-48AA-9980-7B7F3A5C8885} = {0655EA6B-3496-1C29-BCE9-F0FFE094DA84}
+		{9CAD8FE6-B022-4B56-BA4B-9FDF29181245} = {B077B1ED-067B-495A-BBC9-638A3C3769A8}
+		{46D1AC83-402E-4287-9DC4-7C9A15AC6209} = {9CAD8FE6-B022-4B56-BA4B-9FDF29181245}
 	EndGlobalSection
 EndGlobal
