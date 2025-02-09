@@ -3,7 +3,8 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary p-4 d-flex flex-column align-items-center justify-content-center"
-    style="width: 150px; height: 150px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    style="width: 150px; height: 150px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+    @onclick="ClearErrorMessageAndScenarioName">
     <i class="bi bi-clipboard2-plus fs-1"></i> <!-- Larger icon -->
     <span class="fs-6 mt-2">Create Scenario</span> <!-- Smaller text -->
 </button>
@@ -21,6 +22,10 @@
                 <div class="mb-3">
                     <label for="scenarioName" class="form-label">Scenario Name</label>
                     <input type="text" class="form-control" id="scenarioName" @bind=ScenarioName />
+                    @if (!string.IsNullOrEmpty(ErrorMessage))
+                    {
+                        <div class="text-danger mt-2">@ErrorMessage</div>
+                    }
                 </div>
             </div>
             <div class="modal-footer">
@@ -34,6 +39,7 @@
 @code {
 
     private string? ScenarioName;
+    private string? ErrorMessage;
 
     [Inject]
     private IScenarioClient ScenarioClient { get; set; } = null!;
@@ -42,9 +48,27 @@
     {
         if (string.IsNullOrEmpty(ScenarioName))
         {
+            ErrorMessage = "Scenario name cannot be empty.";
             return;
         }
 
-        await ScenarioClient.CreateScenarioAsync(new CreateScenarioDto { Name = ScenarioName });
+        var response = await ScenarioClient.CreateScenarioAsync(new CreateScenarioDto { Name = ScenarioName });
+        if (response.Message is not null)
+        {
+            // Show error message
+            ErrorMessage = response.Message;
+        }
+        else
+        {
+            // Close modal
+            ScenarioName = string.Empty;
+            ErrorMessage = null;
+        }
+    }
+
+    private void ClearErrorMessageAndScenarioName()
+    {
+        ErrorMessage = null;
+        ScenarioName = string.Empty;
     }
 }

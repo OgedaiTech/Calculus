@@ -23,7 +23,12 @@ internal class CreateScenarioEndpoint : Endpoint<CreateScenarioRequest, CreateSc
     var scenario = await _service.GetScenarioByNameAsync(req.Name, ct);
     if (scenario.Data is not null)
     {
-      await SendAsync(new CreateScenarioResponse { Id = scenario.Data!.Id }, statusCode: (int)HttpStatusCode.Conflict, cancellation: ct);
+      await SendAsync(new CreateScenarioResponse
+      {
+        Id = scenario.Data!.Id,
+        Message = "There is a scenario already created with that name"
+      },
+        statusCode: (int)HttpStatusCode.Conflict, cancellation: ct);
       return;
     }
 
