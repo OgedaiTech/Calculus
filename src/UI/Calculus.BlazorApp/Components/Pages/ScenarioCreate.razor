@@ -1,4 +1,7 @@
-﻿<!-- Button trigger modal -->
+﻿@using Calculus.BlazorApp.Clients.Scenario
+@using Models;
+
+<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary p-4 d-flex flex-column align-items-center justify-content-center"
     style="width: 150px; height: 150px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     <i class="bi bi-clipboard2-plus fs-1"></i> <!-- Larger icon -->
@@ -15,12 +18,33 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <div class="mb-3">
+                    <label for="scenarioName" class="form-label">Scenario Name</label>
+                    <input type="text" class="form-control" id="scenarioName" @bind=ScenarioName />
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
+                <button type="button" class="btn btn-primary" @onclick="CreateScenarioAsync">Create</button>
             </div>
         </div>
     </div>
 </div>
+
+@code {
+
+    private string? ScenarioName;
+
+    [Inject]
+    private IScenarioClient ScenarioClient { get; set; } = null!;
+
+    private async Task CreateScenarioAsync()
+    {
+        if (string.IsNullOrEmpty(ScenarioName))
+        {
+            return;
+        }
+
+        await ScenarioClient.CreateScenarioAsync(new CreateScenarioDto { Name = ScenarioName });
+    }
+}
