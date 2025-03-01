@@ -5,6 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+builder.Services.AddHttpClient();
+
 builder.Services.AddScoped<IScenarioClient, ScenarioClient>();
 
 // Add services to the container.
